@@ -5,7 +5,7 @@ public class CDM_Machine {
     public static void main(String[] args) {
         Scanner z = new Scanner(System.in);
 
-        int balance = 10000;  // Starting balance
+        int balance = 10000; 
         int total_amount;
         char ch;
 
@@ -56,6 +56,7 @@ public class CDM_Machine {
         }
     }
 }
+
 
 
 
