@@ -1,8 +1,6 @@
 package BASICS.JAVA_PROJECTS;
 import java.util.Scanner;
 
-
-
 class Student {
     int rollNo;
     String name;
@@ -20,7 +18,6 @@ class Student {
 class StudentList {
     private Student head;
 
-    // Add Student
     public void addStudent(int rollNo, String name, float marks) {
         Student newStudent = new Student(rollNo, name, marks);
 
@@ -33,17 +30,16 @@ class StudentList {
             temp.next = newStudent;
             newStudent.prev = temp;
         }
-        System.out.println("✅ Student added successfully!");
+        System.out.println("Student added successfully");
     }
 
-    // Delete Student
     public void deleteStudent(int rollNo) {
         Student temp = head;
         while (temp != null && temp.rollNo != rollNo)
             temp = temp.next;
 
         if (temp == null) {
-            System.out.println("❌ Student not found!");
+            System.out.println("Student not found");
             return;
         }
 
@@ -51,40 +47,37 @@ class StudentList {
         if (temp.next != null) temp.next.prev = temp.prev;
         if (temp == head) head = temp.next;
 
-        System.out.println("✅ Student deleted successfully!");
+        System.out.println("Student deleted successfully");
     }
 
-    // Update Student
     public void updateStudent(int rollNo, String newName, float newMarks) {
         Student temp = head;
         while (temp != null && temp.rollNo != rollNo)
             temp = temp.next;
 
         if (temp == null) {
-            System.out.println("❌ Student not found!");
+            System.out.println("Student not found");
             return;
         }
 
         temp.name = newName;
         temp.marks = newMarks;
-        System.out.println("✅ Student updated successfully!");
+        System.out.println("Student updated successfully");
     }
 
-    // Search Student
     public void searchStudent(int rollNo) {
         Student temp = head;
         while (temp != null && temp.rollNo != rollNo)
             temp = temp.next;
 
         if (temp == null) {
-            System.out.println("❌ Student not found!");
+            System.out.println("Student not found");
             return;
         }
 
         System.out.println("Roll No: " + temp.rollNo + " | Name: " + temp.name + " | Marks: " + temp.marks);
     }
 
-    // Sort Students (by Roll No or Marks)
     public void sortStudents(boolean byMarks, boolean ascending) {
         if (head == null) return;
 
@@ -97,24 +90,22 @@ class StudentList {
                     condition = ascending ? (i.rollNo > j.rollNo) : (i.rollNo < j.rollNo);
 
                 if (condition) {
-                    // Swap data only
                     int tempRoll = i.rollNo; i.rollNo = j.rollNo; j.rollNo = tempRoll;
                     String tempName = i.name; i.name = j.name; j.name = tempName;
                     float tempMarks = i.marks; i.marks = j.marks; j.marks = tempMarks;
                 }
             }
         }
-        System.out.println("✅ Records sorted successfully!");
+        System.out.println("Records sorted successfully");
     }
 
-    // Display All Students
     public void displayStudents() {
         if (head == null) {
-            System.out.println("⚠️ No records found!");
+            System.out.println("No records found");
             return;
         }
 
-        System.out.println("\n--- Student Records ---");
+        System.out.println("\nStudent Records");
         Student temp = head;
         while (temp != null) {
             System.out.println("Roll No: " + temp.rollNo + " | Name: " + temp.name + " | Marks: " + temp.marks);
@@ -133,7 +124,7 @@ public class StudentManagementSystem {
         float marks;
 
         do {
-            System.out.println("\n--- Student Record Management System ---");
+            System.out.println("\nStudent Record Management System");
             System.out.println("1. Add Student");
             System.out.println("2. Delete Student");
             System.out.println("3. Update Student");
@@ -149,26 +140,34 @@ public class StudentManagementSystem {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter Roll No: "); rollNo = sc.nextInt();
-                    System.out.print("Enter Name: "); name = sc.next();
-                    System.out.print("Enter Marks: "); marks = sc.nextFloat();
+                    System.out.print("Enter Roll No: ");
+                    rollNo = sc.nextInt();
+                    System.out.print("Enter Name: ");
+                    name = sc.next();
+                    System.out.print("Enter Marks: ");
+                    marks = sc.nextFloat();
                     list.addStudent(rollNo, name, marks);
                     break;
 
                 case 2:
-                    System.out.print("Enter Roll No to delete: "); rollNo = sc.nextInt();
+                    System.out.print("Enter Roll No to delete: ");
+                    rollNo = sc.nextInt();
                     list.deleteStudent(rollNo);
                     break;
 
                 case 3:
-                    System.out.print("Enter Roll No to update: "); rollNo = sc.nextInt();
-                    System.out.print("Enter New Name: "); name = sc.next();
-                    System.out.print("Enter New Marks: "); marks = sc.nextFloat();
+                    System.out.print("Enter Roll No to update: ");
+                    rollNo = sc.nextInt();
+                    System.out.print("Enter New Name: ");
+                    name = sc.next();
+                    System.out.print("Enter New Marks: ");
+                    marks = sc.nextFloat();
                     list.updateStudent(rollNo, name, marks);
                     break;
 
                 case 4:
-                    System.out.print("Enter Roll No to search: "); rollNo = sc.nextInt();
+                    System.out.print("Enter Roll No to search: ");
+                    rollNo = sc.nextInt();
                     list.searchStudent(rollNo);
                     break;
 
@@ -178,8 +177,8 @@ public class StudentManagementSystem {
                 case 8: list.sortStudents(true, false); break;
                 case 9: list.displayStudents(); break;
 
-                case 0: System.out.println("👋 Exiting..."); break;
-                default: System.out.println("❌ Invalid choice!");
+                case 0: System.out.println("Exiting"); break;
+                default: System.out.println("Invalid choice");
             }
         } while (choice != 0);
 
